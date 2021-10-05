@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from books.views import (
@@ -13,6 +13,7 @@ from books.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('social/', include('socialpost.urls')),
     path('htmx/<int:id>/', create_book, name='create-book'),
     path('htmx/book/<int:id>/', detail_book, name="detail-book"),
     path('htmx/book/<int:id>/update/', update_book, name="update-book"),
