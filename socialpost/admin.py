@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+
+class PostPhotosInLine(admin.TabularInline):
+    model = PostPhotos
+
+
+class PostAdmin(admin.ModelAdmin):
+    inlines = [PostPhotosInLine]
+
+
+admin.site.register(Post, PostAdmin)
