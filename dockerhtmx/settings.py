@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'books',
+    'socialpost',
     'crispy_forms',
     'crispy_tailwind',
 ]
@@ -81,8 +82,13 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'NAME': 'dockerhtmx',
+        # 'HOST': 'db',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
