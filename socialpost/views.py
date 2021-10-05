@@ -17,7 +17,7 @@ def create_photos(request, id):
             obj=form.save(commit=False)
             obj.post=post
             obj.save()
-            return redirect("detail-book", id=obj.id)
+            return redirect("detail_photo", id=obj.id)
         else:
             return render(request, "socialpost/photo_form.html", context={
                 "form": form
@@ -38,29 +38,28 @@ def create_photo_form(request):
     }
     return render(request, "socialpost/photo_form.html", context)
 
-def update_book(request, id):
-    book = Book.objects.get(id=id)
-    form = BookForm(request.POST or None, instance=book)
+def update_photo(request, id):
+    photo = PostPhotos.objects.get(id=id)
+    form = PostPhotosForm(request.POST or None,request.FILES, instance=photo)
 
     if request.method == "POST":
-        form = BookForm(request.POST, instance=book)
+        form = PostPhotosForm(request.POST, request.FILES, instance=photo)
         if form.is_valid():
             form.save()
-            return redirect("detail-book", id=book.id)
-
+            return redirect("detail_photo", id=photo.id)
     context = {
         "form": form,
-        "book": book
+        "photo": photo
     }
 
-    return render(request, "partials/book_form.html", context)
+    return render(request, "socialpost/photo_form.html", context)
 
 
-def delete_book(request, id):
-    book = get_object_or_404(Book, id=id)
+def delete_photo(request, id):
+    photo = get_object_or_404(PostPhotos, id=id)
 
     if request.method == "POST":
-        book.delete()
+        photo.delete()
         return HttpResponse("")
 
     return HttpResponseNotAllowed(
@@ -70,10 +69,10 @@ def delete_book(request, id):
     )
 
 
-def detail_book(request, id):
-    book = get_object_or_404(Book, id=id)
+def detail_photo(request, id):
+    photo = get_object_or_404(PostPhotos, id=id)
     context = {
-        "book": book
+        "photo": photo
     }
-    return render(request, "partials/book_detail.html", context)
+    return render(request, "socialpost/photo_details.html", context)
 
