@@ -2,7 +2,7 @@
 {% load tailwind_filters %}
 
 <div hx-target="this" hx-swap="outerHTML" class="mt-3 py-3 px-3 bg-white shadow border border-gray-100">
-    <form method="POST" enctype="multipart/form-data" hx-encoding="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" hx-encoding="multipart/form-data" id="image_upload_form">
         {% csrf_token %}
         {{ form|crispy }}
         
@@ -21,5 +21,13 @@
             Submit
         </button>
         {% endif %}
+        <progress id='progress' value='0' max='100'></progress>
     </form>
 </div>
+{% block js %}
+<script>
+        htmx.on('#image_upload_form', 'htmx:xhr:progress', function(evt) {
+          htmx.find('#progress').setAttribute('value', evt.detail.loaded/evt.detail.total * 100)
+        });
+    </script>
+{% endblock js %}
