@@ -24,12 +24,22 @@ def TryAll(request):
 
 
 ```
+# Aggregation
 
+```
+prod_avg_agg = Product.objects.aggregate(Avg('price'), Max('price'), Min('price'))
+print("Aggegate=",prod_avg_agg['price__min'],prod_avg_agg['price__max'],prod_avg_agg['price__avg'])
+```
+
+it will return calculated output of all objects. But Generating aggregates for each item in a QuerySet can be done by by annotate.
+Per-object summaries can be generated using the annotate() clause. When an annotate() clause is specified, each object in the QuerySet will be annotated with the specified values.
+ For example, if you are retrieving a list of Priducts, you may want to know how many users  liked to each product. Each product has a many-to-many relationship with the users; we want to summarize this relationship for each product in the QuerySet.
+ 
 ## Talk about Annotate
 
 ``` 
 ann= Product.objects.annotate(new=Sum('price'))
-``
+```
 
 In this case it will add a new field named `new` with each objects of product model and its value will be Sum of That object price only. Because annotate not found any groups and thus he assumes each object as a group. In this case it returns a queryset.
 But if 
