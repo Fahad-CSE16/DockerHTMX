@@ -66,18 +66,30 @@ if we are clear about these concepts then we can use multiplate annotate in same
 Happy coding!
 
 # lambda Function
-basic Syntax = `labda perameters : experession`
-```a = lambda a,b : a*a + 2*a*b + b*b```
+basic Syntax = 
+```
+labda perameters : experession
+```
+```
+a = lambda a,b : a*a + 2*a*b + b*b
+```
 
 # calling lambda with perameters
-```a = (lambda a,b : a*a + 2*a*b + b*b)(2,3)```
+```
+a = (lambda a,b : a*a + 2*a*b + b*b)(2,3)
+```
 
 
 # map functions basic syntax
-```b= map(functionname, list_variable)``` 
+```
+b= map(functionname, list_variable)
+``` 
 example 
-```b= map( lambda a: a*a  , [3,4] )```
+```
+b= map( lambda a: a*a  , [3,4] )
+```
 It will return map object.. To get values make it as list
+`print(list(b))`
 
 # Comprehensive 
 ```
