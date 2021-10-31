@@ -65,4 +65,34 @@ By doing this, groups(not objects) will be  ordered according to values of new. 
 if we are clear about these concepts then we can use multiplate annotate in same like using same process.
 Happy coding!
 
+# lambda Function
+basic Syntax = `labda perameters : experession`
+```a = lambda a,b : a*a + 2*a*b + b*b```
+
+# calling lambda with perameters
+```a = (lambda a,b : a*a + 2*a*b + b*b)(2,3)```
+
+
+# map functions basic syntax
+```b= map(functionname, list_variable)``` 
+example 
+```b= map( lambda a: a*a  , [3,4] )```
+It will return map object.. To get values make it as list
+
+# Comprehensive 
+```
+num=[3,4,5]
+comprehensive= [ x*x for x in num]
+```
+
+# For Filtering in comprehensive list 
+```
+filtered= [x for x in range(1,11) if x%2==0]
+```
+# swap variable value
+```
+a, b= 5, 10
+a,b = b, a
+```
+
 
