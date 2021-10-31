@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from annotateaggegate.add_prod import addProd
+from annotateaggegate.views import *
+# addProd()
 from books.views import (
     create_book,
     create_book_form,
@@ -15,6 +18,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('social/', include('socialpost.urls')),
     path('htmx/<int:id>/', create_book, name='create-book'),
+    path('anag/', TryAll, name='anag'),
     path('htmx/book/<int:id>/', detail_book, name="detail-book"),
     path('htmx/book/<int:id>/update/', update_book, name="update-book"),
     path('htmx/book/<int:id>/delete/', delete_book, name="delete-book"),

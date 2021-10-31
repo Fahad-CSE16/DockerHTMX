@@ -2,7 +2,9 @@
 {% load tailwind_filters %}
 
 <div hx-target="this" hx-swap="outerHTML" class="mt-3 py-3 px-3 bg-white shadow border border-gray-100">
-    <form method="POST" enctype="multipart/form-data" hx-encoding="multipart/form-data" id="image_upload_form">
+    <form method="POST" enctype="multipart/form-data" hx-encoding="multipart/form-data" id="image_upload_form"
+    {% comment %} _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100' {% endcomment %}
+    >
         {% csrf_token %}
         {{ form|crispy }}
         

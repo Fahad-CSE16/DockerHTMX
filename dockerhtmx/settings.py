@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'socialpost',
     'crispy_forms',
     'crispy_tailwind',
+    'annotateaggegate',
 ]
 
 MIDDLEWARE = [
